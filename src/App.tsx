@@ -4,10 +4,10 @@ import './App.scss'
 
 const App = () => {
   return (
-    <div className='App'>
+    <div className='app'>
       <h1>todos</h1>
       <TodoList />
-      <small>
+      <small className='todo__small'>
         Left click to toggle completed. <br /> Right click to delete todo.
       </small>
     </div>
