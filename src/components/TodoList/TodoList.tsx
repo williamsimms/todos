@@ -12,9 +12,19 @@ const TodoList = () => {
     setTodos(todos)
   }, [])
 
-  const onLeftClickHandler = () => {}
+  const onLeftClickHandler = (id: string) => {
+    const foundTodoIndex = todos.findIndex((todo: any) => {
+      return String(todo.id) === id
+    })
+  }
 
-  const onRightClickHandler = () => {}
+  const onRightClickHandler = (id: string) => {
+    const filteredTodos = todos.filter((todo: any) => {
+      return String(todo.id) !== id
+    })
+    setTodos(filteredTodos)
+    localStorage.setItem('todos', JSON.stringify(filteredTodos))
+  }
 
   const onSubmit = (e: any) => {
     e.preventDefault()
@@ -22,16 +32,15 @@ const TodoList = () => {
     const todo = {
       id: uuid(),
       text: todoInput.trim(),
-      createdAt: new Date(),
+      createdAt: Date.now(),
       completed: false,
     }
 
     if (todoInput.trim().length > 0) {
       setTodos((todos: any) => [...todos, todo])
     }
-
+    localStorage.setItem('todos', JSON.stringify([...todos, todo]))
     setTodoInput('')
-    localStorage.setItem('todos', JSON.stringify(todos))
   }
 
   return (
@@ -47,16 +56,19 @@ const TodoList = () => {
       </form>
 
       <ul className='todolist'>
-        {todos.map((todo: any) => (
-          <Todo
-            text={todo.text}
-            id={todo.id}
-            completed={todo.completed}
-            createdAt={todo.createdAt}
-            onLeftClickHandler={onLeftClickHandler}
-            onRightClickHandler={onRightClickHandler}
-          />
-        ))}
+        {todos
+          .sort((a: any, b: any) => a.createdAt - b.createdAt)
+          .map((todo: any) => (
+            <Todo
+              key={String(todo.id)}
+              text={todo.text}
+              id={todo.id}
+              completed={todo.completed}
+              createdAt={todo.createdAt}
+              onLeftClickHandler={onLeftClickHandler}
+              onRightClickHandler={onRightClickHandler}
+            />
+          ))}
       </ul>
     </>
   )

@@ -6,16 +6,16 @@ interface Props {
   text: string
   id: string
   createdAt: Date
-  onLeftClickHandler: () => void
-  onRightClickHandler: () => void
+  onLeftClickHandler: any
+  onRightClickHandler: any
 }
 
 const Todo = ({ completed, text, id, createdAt, onLeftClickHandler, onRightClickHandler }: Props) => {
   return (
     <li
       className={`todo ${completed && 'todo__completed'}`}
-      onClick={onLeftClickHandler}
-      onAuxClick={onRightClickHandler}>
+      onClick={() => onLeftClickHandler(id)}
+      onContextMenu={() => onRightClickHandler(id)}>
       {text}
     </li>
   )
