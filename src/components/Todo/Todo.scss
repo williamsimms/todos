@@ -1,5 +1,11 @@
 .todo {
+  border-top: 0.1rem solid #e5e5e5;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 1.5rem 3rem;
 }
 
 .todo__completed {
+  color: #b6b6b6;
+  text-decoration: line-through 0.2rem;
 }

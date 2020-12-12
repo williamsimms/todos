@@ -53,23 +53,23 @@ const TodoList = () => {
           value={todoInput}
           onChange={(e) => setTodoInput(e.target.value)}
         />
-      </form>
 
-      <ul className='todolist'>
-        {todos
-          .sort((a: any, b: any) => a.createdAt - b.createdAt)
-          .map((todo: any) => (
-            <Todo
-              key={String(todo.id)}
-              text={todo.text}
-              id={todo.id}
-              completed={todo.completed}
-              createdAt={todo.createdAt}
-              onLeftClickHandler={onLeftClickHandler}
-              onRightClickHandler={onRightClickHandler}
-            />
-          ))}
-      </ul>
+        <ul className='todolist'>
+          {todos
+            .sort((a: any, b: any) => a.createdAt - b.createdAt)
+            .map((todo: any) => (
+              <Todo
+                key={String(todo.id)}
+                text={todo.text}
+                id={todo.id}
+                completed={todo.completed}
+                createdAt={todo.createdAt}
+                onLeftClickHandler={onLeftClickHandler}
+                onRightClickHandler={onRightClickHandler}
+              />
+            ))}
+        </ul>
+      </form>
     </>
   )
 }

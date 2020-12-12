@@ -1,2 +1,33 @@
+$black: #000;
+
 .todolist {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.todo__form {
+  box-shadow: 0 0.4rem 1rem rgba($black, 0.1);
+  max-width: 100%;
+  width: 40rem;
+  margin-bottom: 3rem;
+}
+
+.todo__form__input {
+  border: none;
+  color: #444;
+  font-size: 3rem;
+  padding: 1rem 2rem;
+  display: block;
+  width: 100%;
+  font-family: inherit;
+
+  &::placeholder {
+    color: #d5d5d5;
+  }
+
+  &:focus {
+    outline: 1px solid rgb(179, 131, 226);
+  }
 }
