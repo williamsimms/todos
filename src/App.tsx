@@ -1,10 +1,15 @@
 import React from 'react'
+import TodoList from './components/TodoList/TodoList'
 import './App.scss'
 
-function App() {
+const App = () => {
   return (
     <div className='App'>
-      <h1>App</h1>
+      <h1>todos</h1>
+      <TodoList />
+      <small>
+        Left click to toggle completed. <br /> Right click to delete todo.
+      </small>
     </div>
   )
 }
