@@ -16,9 +16,25 @@ const TodoList = () => {
     const foundTodoIndex = todos.findIndex((todo: any) => {
       return String(todo.id) === id
     })
+
+    const todoToUpdate: any = todos[foundTodoIndex]
+
+    const updatedTodo = {
+      ...todoToUpdate,
+      completed: !todoToUpdate.completed,
+    }
+
+    const copiedTodos = [...todos]
+
+    copiedTodos.splice(foundTodoIndex, 1, updatedTodo)
+
+    setTodos(copiedTodos)
+    localStorage.setItem('todos', JSON.stringify(copiedTodos))
   }
 
-  const onRightClickHandler = (id: string) => {
+  const onRightClickHandler = (e: any, id: string) => {
+    e.preventDefault()
+
     const filteredTodos = todos.filter((todo: any) => {
       return String(todo.id) !== id
     })

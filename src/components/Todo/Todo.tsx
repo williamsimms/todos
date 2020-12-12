@@ -15,7 +15,7 @@ const Todo = ({ completed, text, id, createdAt, onLeftClickHandler, onRightClick
     <li
       className={`todo ${completed && 'todo__completed'}`}
       onClick={() => onLeftClickHandler(id)}
-      onContextMenu={() => onRightClickHandler(id)}>
+      onContextMenu={(e) => onRightClickHandler(e, id)}>
       {text}
     </li>
   )
